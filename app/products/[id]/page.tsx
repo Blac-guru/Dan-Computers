@@ -5,6 +5,7 @@ import React from "react";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import FloatingCTA from "@/components/floating-cta";
@@ -18,22 +19,29 @@ import {
   Phone,
   MessageCircle,
   Quote,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
-export default function ProductDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = React.use(params);
+export default function ProductDetailPage() {
+  const { id } = useParams<{ id: string }>();
   const product = getProductById(id);
   const [quantity, setQuantity] = useState(1);
   const [showQuoteForm, setShowQuoteForm] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [quoteData, setQuoteData] = useState({
     name: "",
     email: "",
     phone: "",
   });
+
+  // Get product images - use images array first, then fallback to single image
+  const allImages =
+    product?.images && product.images.length > 0
+      ? product.images
+      : product?.image
+        ? [product.image]
+        : ["/placeholder.svg"];
 
   if (!product) {
     return (
@@ -69,6 +77,16 @@ export default function ProductDetailPage({
     setShowQuoteForm(false);
   };
 
+  const nextImage = () => {
+    setActiveImageIndex((prev) => (prev + 1) % allImages.length);
+  };
+
+  const prevImage = () => {
+    setActiveImageIndex((prev) =>
+      prev === 0 ? allImages.length - 1 : prev - 1,
+    );
+  };
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -98,60 +116,112 @@ export default function ProductDetailPage({
       {/* Product Detail */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16">
-            {/* Product Image */}
-            <FadeInUp>
+          {/* Main Product Grid - 2 columns on desktop, 1 on mobile */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-16">
+            {/* Multi-Image Carousel - Left side desktop / Top mobile */}
+            <FadeInUp className="lg:col-span-2">
               <div className="bg-card rounded-lg overflow-hidden border border-border">
-                <div className="relative h-96 md:h-[500px] w-full">
+                {/* Main Image */}
+                <div className="relative h-96 md:h-[500px] lg:h-[550px] w-full bg-muted flex items-center justify-center overflow-hidden group">
                   <Image
-                    src={product.image || "/placeholder.svg"}
-                    alt={product.name}
+                    key={activeImageIndex}
+                    src={allImages[activeImageIndex]}
+                    alt={`${product.name} - Image ${activeImageIndex + 1}`}
                     fill
-                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover hover:scale-110 transition-transform duration-500"
                   />
+
+                  {/* Navigation Arrows */}
+                  {allImages.length > 1 && (
+                    <>
+                      <button
+                        onClick={prevImage}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft className="w-6 h-6" />
+                      </button>
+                      <button
+                        onClick={nextImage}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100"
+                        aria-label="Next image"
+                      >
+                        <ChevronRight className="w-6 h-6" />
+                      </button>
+
+                      {/* Image Counter */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                        {activeImageIndex + 1} / {allImages.length}
+                      </div>
+                    </>
+                  )}
                 </div>
+
+                {/* Image Thumbnails */}
+                {allImages.length > 1 && (
+                  <div className="p-4 border-t border-border flex gap-2 overflow-x-auto bg-muted/30">
+                    {allImages.map((img, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveImageIndex(idx)}
+                        className={`relative w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all ${
+                          idx === activeImageIndex
+                            ? "border-primary"
+                            : "border-border hover:border-primary/50"
+                        }`}
+                      >
+                        <Image
+                          src={img}
+                          alt={`Thumbnail ${idx + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </FadeInUp>
 
-            {/* Product Info */}
-            <FadeInUp delay={100}>
-              <div>
+            {/* Product Info Section - Right side desktop / Below mobile */}
+            <FadeInUp delay={100} className="lg:col-span-1">
+              <div className="sticky top-20">
                 {/* Brand Badge */}
                 <div className="inline-block px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-semibold mb-4">
                   {product.brand}
                 </div>
 
                 {/* Title */}
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
                   {product.name}
                 </h1>
 
                 {/* Rating */}
-                <div className="flex items-center gap-2 mb-6">
+                <div className="flex items-center gap-2 mb-6 pb-6 border-b border-border">
                   <div className="flex items-center gap-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-5 h-5 ${i < starRating ? "fill-accent text-accent" : "text-muted-foreground"}`}
+                        className={`w-4 h-4 ${i < starRating ? "fill-accent text-accent" : "text-muted-foreground"}`}
                       />
                     ))}
                   </div>
                   <span className="text-sm text-muted-foreground">
-                    ({product.rating} rating)
+                    {product.rating} rating
                   </span>
                 </div>
 
-                {/* Price */}
-                <div className="mb-8 pb-8 border-b border-border">
-                  <p className="text-sm text-muted-foreground mb-2">
-                    Starting Price
+                {/* Price Section */}
+                <div className="mb-6 pb-6 border-b border-border">
+                  <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide">
+                    Price
                   </p>
                   <div className="flex items-baseline gap-3">
                     <h2 className="text-3xl font-bold text-primary">
                       {product.price}
                     </h2>
                     {product.originalPrice && (
-                      <span className="text-lg text-muted-foreground line-through">
+                      <span className="text-sm text-muted-foreground line-through">
                         {product.originalPrice}
                       </span>
                     )}
@@ -159,18 +229,18 @@ export default function ProductDetailPage({
                 </div>
 
                 {/* Stock Status */}
-                <div className="mb-8 pb-8 border-b border-border">
+                <div className="mb-6 pb-6 border-b border-border">
                   <div className="flex items-center gap-2">
                     {product.inStock ? (
                       <>
-                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                         <span className="text-sm font-semibold text-green-600">
                           In Stock ({product.stockQuantity} available)
                         </span>
                       </>
                     ) : (
                       <>
-                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                         <span className="text-sm font-semibold text-red-600">
                           Out of Stock
                         </span>
@@ -180,31 +250,45 @@ export default function ProductDetailPage({
                 </div>
 
                 {/* Quantity Selector */}
-                <div className="mb-8 pb-8 border-b border-border">
-                  <p className="text-sm text-muted-foreground mb-3">Quantity</p>
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center border border-border rounded-lg">
-                      <button
-                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                        className="px-3 py-2 text-foreground hover:bg-muted transition-colors"
-                      >
-                        −
-                      </button>
-                      <span className="px-4 py-2 font-semibold">
-                        {quantity}
-                      </span>
-                      <button
-                        onClick={() => setQuantity(quantity + 1)}
-                        className="px-3 py-2 text-foreground hover:bg-muted transition-colors"
-                      >
-                        +
-                      </button>
-                    </div>
+                <div className="mb-6 pb-6 border-b border-border">
+                  <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wide">
+                    Quantity
+                  </p>
+                  <div className="flex items-center border border-border rounded-lg w-fit">
+                    <button
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="px-4 py-2 text-foreground hover:bg-muted transition-colors"
+                    >
+                      −
+                    </button>
+                    <span className="px-6 py-2 font-semibold border-l border-r border-border">
+                      {quantity}
+                    </span>
+                    <button
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="px-4 py-2 text-foreground hover:bg-muted transition-colors"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
 
+                {/* Warranty Info */}
+                <div className="bg-muted/40 p-3 rounded-lg mb-6 border border-border/50">
+                  <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wide">
+                    Warranty
+                  </p>
+                  <p className="text-sm font-medium text-foreground">
+                    {product.warranty}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    <span className="font-semibold">Availability:</span>{" "}
+                    {product.availability}
+                  </p>
+                </div>
+
                 {/* Action Buttons */}
-                <div className="flex flex-col gap-3 mb-8">
+                <div className="flex flex-col gap-3">
                   <button
                     onClick={() => setShowQuoteForm(!showQuoteForm)}
                     className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
@@ -229,24 +313,83 @@ export default function ProductDetailPage({
                     Call Us
                   </a>
                 </div>
-
-                {/* Warranty Info */}
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-semibold text-foreground">
-                      Warranty:
-                    </span>{" "}
-                    {product.warranty}
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    <span className="font-semibold text-foreground">
-                      Availability:
-                    </span>{" "}
-                    {product.availability}
-                  </p>
-                </div>
               </div>
             </FadeInUp>
+          </div>
+
+          {/* Specs and Description Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-16">
+            {/* Description & Features - Left */}
+            <FadeInUp className="lg:col-span-2">
+              {product.description && (
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-foreground mb-4">
+                    Overview
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {product.description}
+                  </p>
+                </div>
+              )}
+
+              {product.longDescription && (
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold text-foreground mb-3">
+                    Details
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {product.longDescription}
+                  </p>
+                </div>
+              )}
+
+              {product.features && product.features.length > 0 && (
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-4">
+                    Key Features
+                  </h3>
+                  <ul className="space-y-2">
+                    {product.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-muted-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </FadeInUp>
+
+            {/* Specifications - Right */}
+            {product.specifications &&
+              Object.keys(product.specifications).length > 0 && (
+                <FadeInUp delay={100} className="lg:col-span-1">
+                  <div className="bg-muted/30 p-6 rounded-lg border border-border sticky top-20">
+                    <h3 className="text-lg font-bold text-foreground mb-4">
+                      Specifications
+                    </h3>
+                    <dl className="space-y-3">
+                      {Object.entries(product.specifications).map(
+                        ([key, value]) => (
+                          <div
+                            key={key}
+                            className="border-b border-border/50 pb-3 last:border-0 last:pb-0"
+                          >
+                            <dt className="text-sm font-semibold text-foreground mb-1">
+                              {key}
+                            </dt>
+                            <dd className="text-sm text-muted-foreground">
+                              {typeof value === "string"
+                                ? value
+                                : JSON.stringify(value)}
+                            </dd>
+                          </div>
+                        ),
+                      )}
+                    </dl>
+                  </div>
+                </FadeInUp>
+              )}
           </div>
 
           {/* Quote Form Modal */}
@@ -324,63 +467,6 @@ export default function ProductDetailPage({
             </div>
           )}
 
-          {/* Long Description */}
-          <div className="mb-16 pb-16 border-b border-border">
-            <FadeInUp>
-              <h2 className="text-2xl font-bold text-foreground mb-4">
-                About This Product
-              </h2>
-              <p className="text-foreground/80 leading-relaxed text-lg">
-                {product.longDescription}
-              </p>
-            </FadeInUp>
-          </div>
-
-          {/* Features */}
-          <div className="mb-16 pb-16 border-b border-border">
-            <FadeInUp>
-              <h2 className="text-2xl font-bold text-foreground mb-8">
-                Key Features
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {product.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <Check className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
-                    <span className="text-foreground/80">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </FadeInUp>
-          </div>
-
-          {/* Detailed Specifications */}
-          <div className="mb-16 pb-16 border-b border-border">
-            <FadeInUp>
-              <h2 className="text-2xl font-bold text-foreground mb-8">
-                Detailed Specifications
-              </h2>
-              <div className="bg-card rounded-lg border border-border overflow-hidden">
-                <div className="divide-y divide-border">
-                  {Object.entries(product.specifications).map(
-                    ([key, value], idx) => (
-                      <div
-                        key={idx}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 md:p-6"
-                      >
-                        <span className="font-semibold text-foreground">
-                          {key}
-                        </span>
-                        <span className="md:col-span-2 text-foreground/80">
-                          {value}
-                        </span>
-                      </div>
-                    ),
-                  )}
-                </div>
-              </div>
-            </FadeInUp>
-          </div>
-
           {/* Related Products */}
           {relatedProducts.length > 0 && (
             <div className="mb-16">
@@ -397,7 +483,11 @@ export default function ProductDetailPage({
                       <div className="bg-card rounded-lg border border-border hover:border-primary/50 overflow-hidden transition-all hover:shadow-lg h-full">
                         <div className="relative h-48 w-full bg-muted">
                           <Image
-                            src={relProduct.image || "/placeholder.svg"}
+                            src={
+                              (relProduct.images && relProduct.images[0]) ||
+                              relProduct.image ||
+                              "/placeholder.svg"
+                            }
                             alt={relProduct.name}
                             fill
                             className="object-cover hover:scale-110 transition-transform duration-500"
