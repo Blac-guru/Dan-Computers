@@ -17,6 +17,7 @@ const categories = [
   { id: "monitors", name: "Monitors", count: 0 },
   { id: "printers", name: "Printers", count: 0 },
   { id: "cctv", name: "CCTV Cameras", count: 0 },
+  { id: "laptop-stands", name: "Laptop Stands", count: 0 },
   { id: "accessories", name: "Accessories", count: 0 },
 ];
 
