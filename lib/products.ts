@@ -1211,7 +1211,7 @@ export const productsData: Product[] = [
     originalPrice: "15,000 KES",
     specs: "Aluminum, Adjustable Height, Cable Management, Ergonomic",
     rating: 4.8,
-    image: "/images/products/laptop-stand.jpg",
+    image: "/images/products/keyboard.jpg",
     description:
       "Premium aluminum laptop stand with ergonomic design for better posture and cooling.",
     longDescription:
@@ -1254,7 +1254,7 @@ export const productsData: Product[] = [
     originalPrice: "10,500 KES",
     specs: "Foldable, Lightweight, 8 Height Settings, Travel Friendly",
     rating: 4.7,
-    image: "/images/products/laptop-stand.jpg",
+    image: "/images/products/usb-hub.jpg",
     description:
       "Ultra-portable foldable laptop stand perfect for digital nomads and remote workers.",
     longDescription:
@@ -1297,7 +1297,7 @@ export const productsData: Product[] = [
     originalPrice: "34,000 KES",
     specs: "Full Motion Arm, Gas Spring, VESA Mount, 360° Rotation",
     rating: 4.9,
-    image: "/images/products/laptop-stand.jpg",
+    image: "/images/products/cooling-pad.jpg",
     description:
       "Professional-grade articulating laptop arm mount for maximum flexibility and desk space.",
     longDescription:
@@ -1340,7 +1340,7 @@ export const productsData: Product[] = [
     originalPrice: "8,000 KES",
     specs: "Aluminum, Height & Angle Adjustable, Ventilated, Foldable",
     rating: 4.6,
-    image: "/images/products/laptop-stand.jpg",
+    image: "/images/products/keyboard.jpg",
     description:
       "Affordable ergonomic laptop stand with multiple adjustment options for comfortable working.",
     longDescription:
@@ -1383,7 +1383,7 @@ export const productsData: Product[] = [
     originalPrice: "5,800 KES",
     specs: "Space-Saving, Vertical Design, Adjustable Width, Aluminum",
     rating: 4.5,
-    image: "/images/products/laptop-stand.jpg",
+    image: "/images/products/usb-hub.jpg",
     description:
       "Space-saving vertical stand that stores your closed laptop upright on your desk.",
     longDescription:
@@ -1426,7 +1426,7 @@ export const productsData: Product[] = [
     originalPrice: "12,000 KES",
     specs: "Bamboo Wood, Built-in Drawer, Phone Holder, Eco-Friendly",
     rating: 4.7,
-    image: "/images/products/laptop-stand.jpg",
+    image: "/images/products/cooling-pad.jpg",
     description:
       "Eco-friendly bamboo laptop stand with integrated storage drawer and phone holder.",
     longDescription:
