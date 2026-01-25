@@ -31,7 +31,7 @@ export const productsData: Product[] = [
     originalPrice: "165,000 KES",
     specs: "RTX 4060, i7-13th Gen, 16GB RAM, 512GB SSD",
     rating: 4.8,
-    image: "/images/products/gaming-laptop.jpg",
+    image: "",
     description:
       "Powerful gaming laptop with RTX 4060 graphics card and latest Intel processor.",
     longDescription:
@@ -75,7 +75,7 @@ export const productsData: Product[] = [
     originalPrice: "85,000 KES",
     specs: "AMD Ryzen 5, 8GB RAM, 256GB SSD, FHD Display",
     rating: 4.6,
-    image: "/images/products/ultrabook.jpg",
+    image: "",
     description:
       "Versatile business laptop combining portability with reliable performance for professionals.",
     longDescription:
@@ -119,7 +119,7 @@ export const productsData: Product[] = [
     originalPrice: "280,000 KES",
     specs: "Apple M3 Chip, 8GB RAM, 512GB SSD, Retina Display",
     rating: 4.9,
-    image: "/images/products/gaming-laptop.jpg",
+    image: "",
     description:
       "Premium ultrabook with Apple's powerful M3 chip and stunning Liquid Retina display.",
     longDescription:
@@ -162,7 +162,7 @@ export const productsData: Product[] = [
     originalPrice: "205,000 KES",
     specs: "Intel i7-1365U, 16GB RAM, 512GB SSD, WUXGA Display",
     rating: 4.7,
-    image: "/images/products/ultrabook.jpg",
+    image: "",
     description:
       "Ultra-slim business laptop with legendary ThinkPad durability and keyboard quality.",
     longDescription:
@@ -205,7 +205,7 @@ export const productsData: Product[] = [
     originalPrice: "59,000 KES",
     specs: "Intel i5, 8GB RAM, 256GB SSD, HD Display",
     rating: 4.5,
-    image: "/images/products/budget-laptop.jpg",
+    image: "",
     description:
       "Affordable, reliable laptop perfect for students and everyday computing needs.",
     longDescription:
@@ -249,7 +249,7 @@ export const productsData: Product[] = [
     originalPrice: "155,000 KES",
     specs: "RTX 4050, AMD Ryzen 7, 16GB RAM, 512GB SSD",
     rating: 4.7,
-    image: "/images/products/gaming-laptop.jpg",
+    image: "",
     description:
       "High-performance gaming laptop with RTX graphics and large display for immersive gaming.",
     longDescription:
@@ -295,7 +295,7 @@ export const productsData: Product[] = [
     originalPrice: "320,000 KES",
     specs: "RTX 4070, i7-13700K, 32GB RAM, 1TB SSD",
     rating: 4.8,
-    image: "/images/products/gaming-desktop.jpg",
+    image: "",
     description:
       "High-end gaming desktop tower with top-tier components for extreme performance.",
     longDescription:
@@ -338,7 +338,7 @@ export const productsData: Product[] = [
     originalPrice: "145,000 KES",
     specs: "AMD Ryzen 5, 16GB RAM, 512GB SSD, Compact Design",
     rating: 4.6,
-    image: "/images/products/office-desktop.jpg",
+    image: "",
     description:
       "Reliable office desktop with solid performance for productivity and business use.",
     longDescription:
@@ -382,7 +382,7 @@ export const productsData: Product[] = [
     originalPrice: "520,000 KES",
     specs: "Intel Xeon, RTX A2000, 32GB ECC RAM, 1TB SSD",
     rating: 4.9,
-    image: "/images/products/workstation.jpg",
+    image: "",
     description:
       "Professional workstation for demanding creative and technical work.",
     longDescription:
@@ -427,7 +427,7 @@ export const productsData: Product[] = [
     originalPrice: "110,000 KES",
     specs: '27" 165Hz, 1440p QHD, IPS, G-Sync',
     rating: 4.8,
-    image: "/images/products/gaming-monitor.jpg",
+    image: "",
     description:
       "High-performance gaming monitor with fast refresh rate and excellent color accuracy.",
     longDescription:
@@ -470,7 +470,7 @@ export const productsData: Product[] = [
     originalPrice: "145,000 KES",
     specs: '27" 4K UHD, 60Hz, IPS, HDR Support',
     rating: 4.7,
-    image: "/images/products/4k-monitor.jpg",
+    image: "",
     description:
       "Premium 4K monitor perfect for creative professionals and content creators.",
     longDescription:
@@ -513,7 +513,7 @@ export const productsData: Product[] = [
     originalPrice: "395,000 KES",
     specs: '27" 5K Retina, 600 nits, Nano-texture Glass',
     rating: 4.9,
-    image: "/images/products/4k-monitor.jpg",
+    image: "",
     description:
       "Professional-grade display designed for creative professionals and Apple ecosystem users.",
     longDescription:
@@ -558,7 +558,7 @@ export const productsData: Product[] = [
     originalPrice: "165,000 KES",
     specs: '34" Curved, 3440x1440, 100Hz, IPS',
     rating: 4.8,
-    image: "/images/products/ultrawide-monitor.jpg",
+    image: "",
     description:
       "Immersive ultrawide curved display for enhanced productivity and gaming.",
     longDescription:
@@ -603,7 +603,7 @@ export const productsData: Product[] = [
     originalPrice: "42,000 KES",
     specs: "Inkjet, Print/Scan/Copy/Fax, Wireless, Mobile Print",
     rating: 4.7,
-    image: "/images/products/inkjet-printer.jpg",
+    image: "",
     description:
       "Versatile all-in-one printer perfect for home and small office use.",
     longDescription:
@@ -646,7 +646,7 @@ export const productsData: Product[] = [
     originalPrice: "50,000 KES",
     specs: "Multifunction, Tank System, Wireless, High-Volume Printing",
     rating: 4.8,
-    image: "/images/products/inkjet-printer.jpg",
+    image: "",
     description:
       "Economical tank-based multifunction printer with extremely low cost-per-page.",
     longDescription:
@@ -689,7 +689,7 @@ export const productsData: Product[] = [
     originalPrice: "115,000 KES",
     specs: "Laser, Monochrome, 38 ppm, Duplex, Network Print",
     rating: 4.9,
-    image: "/images/products/laser-printer.jpg",
+    image: "",
     description:
       "Professional monochrome laser printer for high-volume business printing.",
     longDescription:
@@ -732,7 +732,7 @@ export const productsData: Product[] = [
     originalPrice: "78,000 KES",
     specs: "Color Inkjet, Tank System, Multifunction, Wireless",
     rating: 4.8,
-    image: "/images/products/color-printer.jpg",
+    image: "",
     description:
       "High-quality color tank printer ideal for professional color printing needs.",
     longDescription:
@@ -777,7 +777,7 @@ export const productsData: Product[] = [
     originalPrice: "22,000 KES",
     specs: "4MP, Turret, Night Vision, PoE, IP67 Waterproof",
     rating: 4.8,
-    image: "/images/products/4mp-camera.jpg",
+    image: "",
     description:
       "Professional 4MP turret camera with excellent low-light performance and durability.",
     longDescription:
@@ -820,7 +820,7 @@ export const productsData: Product[] = [
     originalPrice: "17,000 KES",
     specs: "2MP, Starlight Tech, Day-Night, IP67, Audio",
     rating: 4.7,
-    image: "/images/products/hd-camera.jpg",
+    image: "",
     description:
       "Budget-friendly 2MP camera with Starlight technology for excellent night vision.",
     longDescription:
@@ -863,7 +863,7 @@ export const productsData: Product[] = [
     originalPrice: "14,500 KES",
     specs: "1MP, Dome, IR Night Vision, PoE, Compact",
     rating: 4.6,
-    image: "/images/products/2mp-camera.jpg",
+    image: "",
     description:
       "Compact dome camera for indoor and outdoor surveillance at entry-level price.",
     longDescription:
@@ -906,7 +906,7 @@ export const productsData: Product[] = [
     originalPrice: "150,000 KES",
     specs: "4x 4MP Cameras + NVR, 2TB HDD, PoE Switch",
     rating: 4.8,
-    image: "/images/products/cctv-kit.jpg",
+    image: "",
     description:
       "Complete surveillance system with 4 cameras, recorder, and hard drive.",
     longDescription:
@@ -949,7 +949,7 @@ export const productsData: Product[] = [
     originalPrice: "215,000 KES",
     specs: "8x 5MP Cameras, 8-Channel DVR, 4TB HDD, Cables",
     rating: 4.8,
-    image: "/images/products/cctv-kit.jpg",
+    image: "",
     description:
       "High-resolution 8-camera CCTV system for comprehensive property surveillance.",
     longDescription:
@@ -994,7 +994,7 @@ export const productsData: Product[] = [
     originalPrice: "10,000 KES",
     specs: "Wireless 2.4GHz, Long Battery, Quiet Keys",
     rating: 4.7,
-    image: "/images/products/keyboard.jpg",
+    image: "",
     description:
       "Reliable wireless keyboard and mouse combo for everyday computing.",
     longDescription:
@@ -1037,7 +1037,7 @@ export const productsData: Product[] = [
     originalPrice: "27,000 KES",
     specs: "Mechanical, RGB Backlighting, Cherry MX Switches, USB",
     rating: 4.8,
-    image: "/images/products/keyboard.jpg",
+    image: "",
     description:
       "Premium gaming keyboard with mechanical switches and customizable RGB lighting.",
     longDescription:
@@ -1080,7 +1080,7 @@ export const productsData: Product[] = [
     originalPrice: "22,000 KES",
     specs: "30000 DPI, Wireless, Focus Pro 30K Sensor, Lightweight",
     rating: 4.8,
-    image: "/images/products/gaming-mouse.jpg",
+    image: "",
     description:
       "Professional-grade gaming mouse with ultra-high precision and fast wireless connection.",
     longDescription:
@@ -1123,7 +1123,7 @@ export const productsData: Product[] = [
     originalPrice: "15,000 KES",
     specs: "USB-C, 7 Ports, 4K HDMI, 100W Power Delivery",
     rating: 4.7,
-    image: "/images/products/usb-hub.jpg",
+    image: "",
     description:
       "Versatile USB-C hub expanding connectivity for modern laptops.",
     longDescription:
@@ -1166,7 +1166,7 @@ export const productsData: Product[] = [
     originalPrice: "8,000 KES",
     specs: "Dual Fans, USB Powered, Adjustable Stand",
     rating: 4.6,
-    image: "/images/products/cooling-pad.jpg",
+    image: "",
     description:
       "Effective cooling solution for laptops during gaming and heavy workloads.",
     longDescription:
@@ -1211,7 +1211,8 @@ export const productsData: Product[] = [
     originalPrice: "15,000 KES",
     specs: "Aluminum, Adjustable Height, Cable Management, Ergonomic",
     rating: 4.8,
-    image: "/images/products/keyboard.jpg",
+    image:
+      "https://raindesigninc.com/cdn/shop/files/mstand_midnight_main_d8dede5a-5d2f-4ca9-b377-34df4cbe028d.jpg?v=1722881340",
     description:
       "Premium aluminum laptop stand with ergonomic design for better posture and cooling.",
     longDescription:
@@ -1254,7 +1255,8 @@ export const productsData: Product[] = [
     originalPrice: "10,500 KES",
     specs: "Foldable, Lightweight, 8 Height Settings, Travel Friendly",
     rating: 4.7,
-    image: "/images/products/usb-hub.jpg",
+    image:
+      "https://images-cdn.ubuy.co.in/65c7f09282125611fa6665af-laptop-stand-for-desk-laptop-riser.jpg",
     description:
       "Ultra-portable foldable laptop stand perfect for digital nomads and remote workers.",
     longDescription:
@@ -1297,7 +1299,7 @@ export const productsData: Product[] = [
     originalPrice: "34,000 KES",
     specs: "Full Motion Arm, Gas Spring, VESA Mount, 360° Rotation",
     rating: 4.9,
-    image: "/images/products/cooling-pad.jpg",
+    image: "",
     description:
       "Professional-grade articulating laptop arm mount for maximum flexibility and desk space.",
     longDescription:
@@ -1340,7 +1342,7 @@ export const productsData: Product[] = [
     originalPrice: "8,000 KES",
     specs: "Aluminum, Height & Angle Adjustable, Ventilated, Foldable",
     rating: 4.6,
-    image: "/images/products/keyboard.jpg",
+    image: "",
     description:
       "Affordable ergonomic laptop stand with multiple adjustment options for comfortable working.",
     longDescription:
@@ -1383,7 +1385,7 @@ export const productsData: Product[] = [
     originalPrice: "5,800 KES",
     specs: "Space-Saving, Vertical Design, Adjustable Width, Aluminum",
     rating: 4.5,
-    image: "/images/products/usb-hub.jpg",
+    image: "",
     description:
       "Space-saving vertical stand that stores your closed laptop upright on your desk.",
     longDescription:
@@ -1426,7 +1428,7 @@ export const productsData: Product[] = [
     originalPrice: "12,000 KES",
     specs: "Bamboo Wood, Built-in Drawer, Phone Holder, Eco-Friendly",
     rating: 4.7,
-    image: "/images/products/cooling-pad.jpg",
+    image: "",
     description:
       "Eco-friendly bamboo laptop stand with integrated storage drawer and phone holder.",
     longDescription:
