@@ -18,7 +18,8 @@ export function FadeInUp({ children, delay = 0, duration = 0.6 }: FadeInProps) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.style.animation = `fadeInUp ${duration}s ease-out ${delayInSeconds}s both`;
+          (entry.target as HTMLElement).style.animation =
+            `fadeInUp ${duration}s ease-out ${delayInSeconds}s both`;
           observer.unobserve(entry.target);
         }
       },
