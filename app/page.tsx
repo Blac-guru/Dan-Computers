@@ -26,7 +26,7 @@ export default function Home() {
         {/* Background Banner Image */}
         <div className="absolute inset-0 z-0">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 h-256 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/images/dan-comps.jpeg')" }}
           />
           {/* Dark overlay for text visibility */}
