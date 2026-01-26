@@ -5,11 +5,11 @@ import Image from "next/image";
 
 const HERO_IMAGES = [
   {
-    url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop",
+    url: "https://global.botslab.com/cdn/shop/articles/9.22-3.webp?v=1758545174",
     alt: "Modern Laptop Setup",
   },
   {
-    url: "https://5.imimg.com/data5/AB/DC/MY-28477835/bulk-desktop-computers.jpg",
+    url: "https://image.benq.com/is/image/benqco/monitor-all-series-kv-3-m?$ResponsivePreset$&fmt=png-alpha",
     alt: "Computer Desk",
   },
   {

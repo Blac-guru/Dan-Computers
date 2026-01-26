@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { Phone, MapPin, Mail, Facebook, Linkedin, Twitter } from 'lucide-react';
+import Link from "next/link";
+import Image from "next/image";
+import { Phone, MapPin, Mail, Facebook, Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -11,14 +11,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <Image 
-              src="/logo.png" 
-              alt="Dan Computers" 
-              width={50} 
+            <Image
+              src="/logo.png"
+              alt="Dan Computers"
+              width={50}
               height={50}
               className="w-auto h-12 mb-4 brightness-0 invert"
             />
-            <p className="text-sm opacity-90">Your trusted partner for all computer and CCTV solutions in Mombasa.</p>
+            <p className="text-sm opacity-90">
+              Your trusted partner for all computer and CCTV solutions in
+              Mombasa.
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -26,22 +29,34 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/" className="opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/"
+                  className="opacity-90 hover:opacity-100 transition-opacity"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/products"
+                  className="opacity-90 hover:opacity-100 transition-opacity"
+                >
                   Products
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/services"
+                  className="opacity-90 hover:opacity-100 transition-opacity"
+                >
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="opacity-90 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/about"
+                  className="opacity-90 hover:opacity-100 transition-opacity"
+                >
                   About
                 </Link>
               </li>
@@ -83,7 +98,9 @@ export default function Footer() {
         {/* Social Links & Copyright */}
         <div className="border-t border-white/20 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm opacity-90">© 2024 Dan Computers. All rights reserved.</p>
+            <p className="text-sm opacity-90">
+              © 2025 Dan Computers. All rights reserved.
+            </p>
             <div className="flex items-center gap-4">
               <a
                 href="#"
