@@ -7,9 +7,15 @@ interface FadeInProps {
   delay?: number;
   duration?: number;
   direction?: "up" | "down" | "left" | "right";
+  className?: string;
 }
 
-export function FadeInUp({ children, delay = 0, duration = 0.6 }: FadeInProps) {
+export function FadeInUp({
+  children,
+  delay = 0,
+  duration = 0.6,
+  className,
+}: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
   // Convert delay from ms to seconds for CSS animation
   const delayInSeconds = delay / 1000;
@@ -18,7 +24,9 @@ export function FadeInUp({ children, delay = 0, duration = 0.6 }: FadeInProps) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          (entry.target as HTMLElement).style.animation =
+          (
+            (entry.target as HTMLElement).style as CSSStyleDeclaration
+          ).animation =
             `fadeInUp ${duration}s ease-out ${delayInSeconds}s both`;
           observer.unobserve(entry.target);
         }
@@ -30,13 +38,18 @@ export function FadeInUp({ children, delay = 0, duration = 0.6 }: FadeInProps) {
     return () => observer.disconnect();
   }, [delayInSeconds, duration]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div ref={ref} className={className}>
+      {children}
+    </div>
+  );
 }
 
 export function FadeInLeft({
   children,
   delay = 0,
   duration = 0.6,
+  className,
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
   // Convert delay from ms to seconds for CSS animation
@@ -46,7 +59,10 @@ export function FadeInLeft({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.style.animation = `slideInRight ${duration}s ease-out ${delayInSeconds}s both`;
+          (
+            (entry.target as HTMLElement).style as CSSStyleDeclaration
+          ).animation =
+            `slideInRight ${duration}s ease-out ${delayInSeconds}s both`;
           observer.unobserve(entry.target);
         }
       },
@@ -57,10 +73,16 @@ export function FadeInLeft({
     return () => observer.disconnect();
   }, [delayInSeconds, duration]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div ref={ref} className={className}>
+      {children}
+    </div>
+  );
 }
 
 export function ScaleIn({ children, delay = 0, duration = 0.6 }: FadeInProps) {
+  // include className support
+  const { className } = (arguments[0] || {}) as FadeInProps;
   const ref = useRef<HTMLDivElement>(null);
   // Convert delay from ms to seconds for CSS animation
   const delayInSeconds = delay / 1000;
@@ -69,7 +91,9 @@ export function ScaleIn({ children, delay = 0, duration = 0.6 }: FadeInProps) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.style.animation = `scaleIn ${duration}s ease-out ${delayInSeconds}s both`;
+          (
+            (entry.target as HTMLElement).style as CSSStyleDeclaration
+          ).animation = `scaleIn ${duration}s ease-out ${delayInSeconds}s both`;
           observer.unobserve(entry.target);
         }
       },
@@ -80,15 +104,21 @@ export function ScaleIn({ children, delay = 0, duration = 0.6 }: FadeInProps) {
     return () => observer.disconnect();
   }, [delayInSeconds, duration]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div ref={ref} className={className}>
+      {children}
+    </div>
+  );
 }
 
 export function StaggerContainer({
   children,
   staggerDelay = 0.1,
+  className,
 }: {
   children: ReactNode;
   staggerDelay?: number;
+  className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -98,9 +128,14 @@ export function StaggerContainer({
     const items = ref.current.querySelectorAll("[data-stagger]");
     items.forEach((item, index) => {
       const delay = index * staggerDelay;
-      item.style.animation = `fadeInUp 0.6s ease-out ${delay}s both`;
+      ((item as HTMLElement).style as CSSStyleDeclaration).animation =
+        `fadeInUp 0.6s ease-out ${delay}s both`;
     });
   }, [staggerDelay]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div ref={ref} className={className}>
+      {children}
+    </div>
+  );
 }
