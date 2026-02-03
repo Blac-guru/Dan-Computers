@@ -5,19 +5,19 @@ import Image from "next/image";
 
 const HERO_IMAGES = [
   {
-    url: "https://global.botslab.com/cdn/shop/articles/9.22-3.webp?v=1758545174",
+    url: "/image2.jpeg",
     alt: "Modern Laptop Setup",
   },
   {
-    url: "https://image.benq.com/is/image/benqco/monitor-all-series-kv-3-m?$ResponsivePreset$&fmt=png-alpha",
+    url: "/image3.jpeg",
     alt: "Computer Desk",
   },
   {
-    url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1200&h=600&fit=crop",
+    url: "/image4.jpeg",
     alt: "Technology Setup",
   },
   {
-    url: "https://www.computerrepairswoolloongabba.com.au/wp-content/uploads/2021/08/desktop-computer-repair-service.jpg",
+    url: "/image5.jpeg",
     alt: "Professional Workspace",
   },
 ];

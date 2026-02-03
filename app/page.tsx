@@ -559,7 +559,7 @@ export default function Home() {
             <SlideInFromRight delay={200}>
               <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden border border-border shadow-2xl group hover-lift">
                 <img
-                  src="https://rtdisplay.com/wp-content/uploads/2024/12/2-31.jpg"
+                  src="/image1.jpeg"
                   alt="Our Team"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
