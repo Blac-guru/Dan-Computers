@@ -60,7 +60,7 @@ export default function AboutPage() {
                     Meet the Owner
                   </p>
                   <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">
-                    Dan Mwasia
+                    Daniel Opija
                   </h2>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
@@ -118,7 +118,7 @@ export default function AboutPage() {
                 <video
                   className="w-full h-auto"
                   controls
-                  poster="/images/repair.jpg"
+                  poster="/image3.jpeg"
                   playsInline
                 >
                   <source src="/about2.mp4" type="video/mp4" />
