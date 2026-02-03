@@ -220,11 +220,6 @@ export default function ProductDetailPage() {
                     <h2 className="text-3xl font-bold text-primary">
                       {product.price}
                     </h2>
-                    {product.originalPrice && (
-                      <span className="text-sm text-muted-foreground line-through">
-                        {product.originalPrice}
-                      </span>
-                    )}
                   </div>
                 </div>
 

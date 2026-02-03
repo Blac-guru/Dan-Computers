@@ -336,11 +336,6 @@ export default function ProductsPage() {
                             <p className="text-2xl font-bold text-primary mb-1">
                               {product.price}
                             </p>
-                            {product.originalPrice && (
-                              <p className="text-sm text-muted-foreground line-through">
-                                {product.originalPrice}
-                              </p>
-                            )}
                           </div>
 
                           {/* CTA Buttons */}

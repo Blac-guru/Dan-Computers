@@ -103,7 +103,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/daniel.opija.2025"
                 className="opacity-90 hover:opacity-100 transition-opacity"
                 aria-label="Facebook"
               >
